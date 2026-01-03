@@ -1,0 +1,24 @@
+experiment_name: "hessian_digits_02"
+
+data:
+  dataset_name: "digits"  
+  root: "./data"
+  batch_size: 64
+
+model:
+  hidden_dim: 256
+
+training:
+  epochs: 20
+  lr: 0.01
+  momentum: 0.9
+  seed: 42
+
+analysis:
+  use_exact_hessian: true
+  num_power_iters: 50
+  device: "auto"
+
+loo:
+  enabled: true
+  num_samples_to_test: 1
