@@ -1,15 +1,17 @@
-experiment_name: "hessian_digits_02"
+experiment_name: "hessian_mnist_05"
+device: "auto"
 
 data:
-  dataset_name: "digits"  
+  dataset_name: "mnist"  
   root: "./data"
-  batch_size: 64
+  batch_size: 16
 
 model:
-  hidden_dim: 256
+  type: 'mnist'
+  hidden_dim: 128
 
 training:
-  epochs: 20
+  epochs: 5
   lr: 0.01
   momentum: 0.9
   seed: 42
@@ -17,7 +19,7 @@ training:
 analysis:
   use_exact_hessian: true
   num_power_iters: 50
-  device: "auto"
+  reg: 1e-3
 
 loo:
   enabled: true

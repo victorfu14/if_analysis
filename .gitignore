@@ -1,3 +1,6 @@
 /outputs
 /data
 /results
+
+*/__pycache__
+*.ipynb
