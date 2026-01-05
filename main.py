@@ -210,10 +210,8 @@ def run_influence_analysis(cfg: DictConfig):
     
     for i, idx in enumerate(indices_to_remove):
         print(f"[{i+1}/{cfg.loo.num_samples_to_test}] Removing Index {idx}...")
-        torch.cuda.empty_cache()
         del model
-        del optimizer
-        del loss
+        torch.cuda.empty_cache()
         model = Net(input_dim, cfg.model.hidden_dim).to(device)
         
         model, loo_stats, hessian = train_and_measure(cfg, model, train_set, exclude_idx=int(idx))

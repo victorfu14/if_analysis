@@ -8,7 +8,7 @@ data:
 
 model:
   type: 'simple'
-  hidden_dim: 256
+  hidden_dim: 128
 
 training:
   epochs: 15
