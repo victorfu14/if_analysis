@@ -94,7 +94,6 @@ def run_loo_experiment(cfg: DictConfig):
 
     # --- 2. LOO Loop ---
     print(f"\n>>> Starting LOO Experiment (Samples: {cfg.loo.num_samples_to_test})...")
-    
     indices_to_remove = np.random.choice(len(dataset), cfg.loo.num_samples_to_test, replace=False)
     
     for i, idx in enumerate(indices_to_remove):
@@ -146,7 +145,7 @@ def run_influence_analysis(cfg: DictConfig):
     # 1. Load Data
     print(f"Loading Dataset: {cfg.data.dataset_name}")
     dataset, input_dim, _ = get_dataset(cfg) 
-    train_size = int(0.6 * len(dataset))
+    train_size = int(0.9 * len(dataset))
     val_size = len(dataset) - train_size
     train_set, val_set = torch.utils.data.random_split(dataset, [train_size, val_size])
     
@@ -211,6 +210,10 @@ def run_influence_analysis(cfg: DictConfig):
     
     for i, idx in enumerate(indices_to_remove):
         print(f"[{i+1}/{cfg.loo.num_samples_to_test}] Removing Index {idx}...")
+        torch.cuda.empty_cache()
+        del model
+        del optimizer
+        del loss
         model = Net(input_dim, cfg.model.hidden_dim).to(device)
         
         model, loo_stats, hessian = train_and_measure(cfg, model, train_set, exclude_idx=int(idx))

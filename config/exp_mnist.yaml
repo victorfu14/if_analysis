@@ -1,17 +1,17 @@
-experiment_name: "hessian_digits_06"
+experiment_name: "hessian_mnist_06"
 device: "auto"
 
 data:
-  dataset_name: "digits"  
+  dataset_name: "mnist"  
   root: "./data"
   batch_size: 64
 
 model:
-  type: 'simple'
+  type: 'mnist'
   hidden_dim: 256
 
 training:
-  epochs: 15
+  epochs: 5
   lr: 0.01
   momentum: 0.9
   seed: 42
