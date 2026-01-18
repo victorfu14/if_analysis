@@ -1,6 +1,9 @@
 /outputs
 /data
 /results
+/.ipynb_checkpoints
 
 */__pycache__
 *.ipynb
+*.png
+/jax-influence

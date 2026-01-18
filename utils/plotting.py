@@ -19,14 +19,16 @@ def plot_eigenvalues(eigenvalues, save_path="eigenvalue_spectrum.png"):
     axes[0].set_title("Eigenvalue Spectrum (Sorted)")
     axes[0].set_xlabel("Index")
     axes[0].set_ylabel("Eigenvalue")
+    # axes[0].set_xscale('log')
     axes[0].set_yscale('symlog', linthresh=0.01)
     axes[0].grid(True, alpha=0.3)
     
     # Plot 2: Density (Histogram)
-    axes[1].hist(eigs, bins=50, color='orange', alpha=0.7, log=True)
+    axes[1].hist(eigs, bins=len(eigs)//10, color='orange', alpha=0.7)
     axes[1].set_title("Eigenvalue Density (Log Scale)")
     axes[1].set_xlabel("Eigenvalue Magnitude")
     axes[1].set_ylabel("Frequency")
+    axes[1].set_yscale('log')
     axes[1].set_xscale('symlog', linthresh=0.01)
     axes[1].grid(True, alpha=0.3)
     

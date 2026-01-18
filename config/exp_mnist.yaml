@@ -1,10 +1,10 @@
-experiment_name: "hessian_mnist_06"
+experiment_name: "hessian_mnist_var_reg_5f"
 device: "auto"
 
 data:
   dataset_name: "mnist"  
-  root: "./data"
-  batch_size: 64
+  root: "/srv/local/data"
+  batch_size: 128
 
 model:
   type: 'mnist'
@@ -14,13 +14,14 @@ training:
   epochs: 5
   lr: 0.01
   momentum: 0.9
-  seed: 42
+  seed: 0
 
 analysis:
+  method: 'fisher'
   use_exact_hessian: true
   num_power_iters: 50
-  reg: 1e-3
+  reg: [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]
 
-loo:
-  enabled: true
-  num_samples_to_test: 5
+remove:
+  enabled: false
+  num_samples_to_test: 1

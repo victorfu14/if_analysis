@@ -12,7 +12,6 @@ def get_dataset(cfg):
     Returns: dataset, input_dim, output_dim
     """
     if cfg.data.dataset_name == "mnist":
-        # ... (Same as before) ...
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.1307,), (0.3081,))
@@ -22,7 +21,7 @@ def get_dataset(cfg):
         output_dim = 10
 
     elif cfg.data.dataset_name == "digits":
-        # --- NEW: 8x8 Digits Dataset (64 dimensions) ---
+        # 8x8 Digits Dataset (dimension = 64) ---
         digits = load_digits()
         X = digits.data  # Shape: (1797, 64)
         y = digits.target
@@ -42,7 +41,6 @@ def get_dataset(cfg):
         output_dim = 10
 
     elif cfg.data.dataset_name == "cifar10":
-        # ... (Same as before) ...
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.5,), (0.5,))
